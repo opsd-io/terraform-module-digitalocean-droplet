@@ -19,6 +19,7 @@
 #     status - The status of the Droplet
 #     tags - The tags associated with the Droplet
 #     volume_ids - A list of the attached block storage volumes
+
 output "droplet_id" {
   description = "The ID of the droplet."
   value       = digitalocean_droplet.main.id
