@@ -31,11 +31,14 @@ module "module_name" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
+| <a name="requirement_digitalocean"></a> [digitalocean](#requirement\_digitalocean) | >= 2.34.1 |
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | >= 2.34.1 |
 
 ## Modules
 
@@ -43,15 +46,30 @@ No modules.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [digitalocean_droplet.main](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/droplet) | resource |
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_droplet_image"></a> [droplet\_image](#input\_droplet\_image) | (Required) The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. | `string` | n/a | yes |
+| <a name="input_droplet_name"></a> [droplet\_name](#input\_droplet\_name) | (Required) The Droplet name. | `string` | n/a | yes |
+| <a name="input_droplet_size"></a> [droplet\_size](#input\_droplet\_size) | (Required) The unique slug that indentifies the type of Droplet. | `string` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | The region where the Droplet will be created. | `string` | n/a | yes |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_droplet_arn"></a> [droplet\_arn](#output\_droplet\_arn) | The URN of the droplet. |
+| <a name="output_droplet_id"></a> [droplet\_id](#output\_droplet\_id) | The ID of the droplet. |
+| <a name="output_droplet_image"></a> [droplet\_image](#output\_droplet\_image) | The image of the Droplet. |
+| <a name="output_droplet_ipv4_address"></a> [droplet\_ipv4\_address](#output\_droplet\_ipv4\_address) | The IPv4 address. |
+| <a name="output_droplet_name"></a> [droplet\_name](#output\_droplet\_name) | The name of the Droplet. |
+| <a name="output_droplet_region"></a> [droplet\_region](#output\_droplet\_region) | The region of the Droplet. |
+| <a name="output_droplet_status"></a> [droplet\_status](#output\_droplet\_status) | The status of the Droplet. |
 <!-- END_TF_DOCS -->
 
 ## Examples of usage

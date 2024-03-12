@@ -4,4 +4,4 @@ resource "digitalocean_droplet" "main" {
   name   = var.droplet_name
   region = var.region
   size   = var.droplet_size
-}# Terraform code goes here
+} # Terraform code goes here
