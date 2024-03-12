@@ -1,12 +1,19 @@
-# variable "variable_name" {
-#	  description = "variable description"
-#   type        = number
-#   default     = 1
-# }
+variable "droplet_image" {
+  description = "(Required) The Droplet image ID or slug. This could be either image ID or droplet snapshot ID."
+  type        = string
+}
 
-# variable "variable_password" {
-#	  description = "variable description"
-#   type        = string
-#   sensitive   = true
-#   default     = "abc"
-# }
+variable "droplet_name" {
+  description = "(Required) The Droplet name."
+  type        = string
+}
+
+variable "region" {
+  description = "The region where the Droplet will be created."
+  type        = string
+}
+
+variable "droplet_size" {
+  description = "(Required) The unique slug that indentifies the type of Droplet."
+  type        = string
+}
