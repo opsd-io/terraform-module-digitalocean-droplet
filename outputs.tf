@@ -1,25 +1,4 @@
 # The following attributes are exported:
-
-#     id - The ID of the Droplet
-#     urn - The uniform resource name of the Droplet
-#     name- The name of the Droplet
-#     region - The region of the Droplet
-#     image - The image of the Droplet
-#     ipv6 - Is IPv6 enabled
-#     ipv6_address - The IPv6 address
-#     ipv4_address - The IPv4 address
-#     ipv4_address_private - The private networking IPv4 address
-#     locked - Is the Droplet locked
-#     private_networking - Is private networking enabled
-#     price_hourly - Droplet hourly price
-#     price_monthly - Droplet monthly price
-#     size - The instance size
-#     disk - The size of the instance's disk in GB
-#     vcpus - The number of the instance's virtual CPUs
-#     status - The status of the Droplet
-#     tags - The tags associated with the Droplet
-#     volume_ids - A list of the attached block storage volumes
-
 output "droplet_id" {
   description = "The ID of the droplet."
   value       = digitalocean_droplet.main.id

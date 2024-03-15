@@ -57,7 +57,9 @@ No modules.
 | <a name="input_droplet_image"></a> [droplet\_image](#input\_droplet\_image) | (Required) The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. | `string` | n/a | yes |
 | <a name="input_droplet_name"></a> [droplet\_name](#input\_droplet\_name) | (Required) The Droplet name. | `string` | n/a | yes |
 | <a name="input_droplet_size"></a> [droplet\_size](#input\_droplet\_size) | (Required) The unique slug that indentifies the type of Droplet. | `string` | n/a | yes |
+| <a name="input_droplet_tags"></a> [droplet\_tags](#input\_droplet\_tags) | A list of the tags to be applied to this Droplet. | `list(string)` | `[]` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region where the Droplet will be created. | `string` | n/a | yes |
+| <a name="input_user_data"></a> [user\_data](#input\_user\_data) | A string of the desired User Data for the Droplet. | `string` | `null` | no |
 
 ## Outputs
 

@@ -17,3 +17,15 @@ variable "droplet_size" {
   description = "(Required) The unique slug that indentifies the type of Droplet."
   type        = string
 }
+
+variable "user_data" {
+  description = "A string of the desired User Data for the Droplet."
+  default     = null
+  type        = string
+}
+
+variable "droplet_tags" {
+  description = "A list of the tags to be applied to this Droplet."
+  default     = []
+  type        = list(string)
+}
