@@ -54,24 +54,27 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_droplet_image"></a> [droplet\_image](#input\_droplet\_image) | (Required) The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. | `string` | n/a | yes |
-| <a name="input_droplet_name"></a> [droplet\_name](#input\_droplet\_name) | (Required) The Droplet name. | `string` | n/a | yes |
-| <a name="input_droplet_size"></a> [droplet\_size](#input\_droplet\_size) | (Required) The unique slug that indentifies the type of Droplet. | `string` | n/a | yes |
-| <a name="input_droplet_tags"></a> [droplet\_tags](#input\_droplet\_tags) | A list of the tags to be applied to this Droplet. | `list(string)` | `[]` | no |
+| <a name="input_backups"></a> [backups](#input\_backups) | A list of the tags to be applied to this Droplet. | `bool` | `false` | no |
+| <a name="input_image"></a> [image](#input\_image) | The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. | `string` | n/a | yes |
+| <a name="input_monitoring"></a> [monitoring](#input\_monitoring) | A list of the tags to be applied to this Droplet. | `bool` | `false` | no |
+| <a name="input_name"></a> [name](#input\_name) | The Droplet name. | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The region where the Droplet will be created. | `string` | n/a | yes |
+| <a name="input_size"></a> [size](#input\_size) | The unique slug that indentifies the type of Droplet. | `string` | n/a | yes |
+| <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | A list of the tags to be applied to this Droplet. | `list(string)` | `[]` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | A list of the tags to be applied to this Droplet. | `list(string)` | `[]` | no |
 | <a name="input_user_data"></a> [user\_data](#input\_user\_data) | A string of the desired User Data for the Droplet. | `string` | `null` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_droplet_arn"></a> [droplet\_arn](#output\_droplet\_arn) | The URN of the droplet. |
-| <a name="output_droplet_id"></a> [droplet\_id](#output\_droplet\_id) | The ID of the droplet. |
-| <a name="output_droplet_image"></a> [droplet\_image](#output\_droplet\_image) | The image of the Droplet. |
-| <a name="output_droplet_ipv4_address"></a> [droplet\_ipv4\_address](#output\_droplet\_ipv4\_address) | The IPv4 address. |
-| <a name="output_droplet_name"></a> [droplet\_name](#output\_droplet\_name) | The name of the Droplet. |
-| <a name="output_droplet_region"></a> [droplet\_region](#output\_droplet\_region) | The region of the Droplet. |
-| <a name="output_droplet_status"></a> [droplet\_status](#output\_droplet\_status) | The status of the Droplet. |
+| <a name="output_arn"></a> [arn](#output\_arn) | The URN of the droplet. |
+| <a name="output_id"></a> [id](#output\_id) | The ID of the droplet. |
+| <a name="output_image"></a> [image](#output\_image) | The image of the Droplet. |
+| <a name="output_ipv4_address"></a> [ipv4\_address](#output\_ipv4\_address) | The IPv4 address. |
+| <a name="output_name"></a> [name](#output\_name) | The name of the Droplet. |
+| <a name="output_region"></a> [region](#output\_region) | The region of the Droplet. |
+| <a name="output_status"></a> [status](#output\_status) | The status of the Droplet. |
 <!-- END_TF_DOCS -->
 
 ## Examples of usage

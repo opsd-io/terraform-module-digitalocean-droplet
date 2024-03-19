@@ -1,10 +1,10 @@
-variable "droplet_image" {
-  description = "(Required) The Droplet image ID or slug. This could be either image ID or droplet snapshot ID."
+variable "image" {
+  description = "The Droplet image ID or slug. This could be either image ID or droplet snapshot ID."
   type        = string
 }
 
-variable "droplet_name" {
-  description = "(Required) The Droplet name."
+variable "name" {
+  description = "The Droplet name."
   type        = string
 }
 
@@ -13,19 +13,37 @@ variable "region" {
   type        = string
 }
 
-variable "droplet_size" {
-  description = "(Required) The unique slug that indentifies the type of Droplet."
+variable "size" {
+  description = "The unique slug that indentifies the type of Droplet."
   type        = string
 }
 
 variable "user_data" {
   description = "A string of the desired User Data for the Droplet."
-  default     = null
   type        = string
+  default     = null
 }
 
-variable "droplet_tags" {
+variable "tags" {
   description = "A list of the tags to be applied to this Droplet."
-  default     = []
   type        = list(string)
+  default     = []
+}
+
+variable "backups" {
+  description = "A list of the tags to be applied to this Droplet."
+  type        = bool
+  default     = false
+}
+
+variable "monitoring" {
+  description = "A list of the tags to be applied to this Droplet."
+  type        = bool
+  default     = false
+}
+
+variable "ssh_keys" {
+  description = "A list of the tags to be applied to this Droplet."
+  type        = list(string)
+  default     = []
 }
