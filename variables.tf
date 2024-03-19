@@ -47,3 +47,9 @@ variable "ssh_keys" {
   type        = list(string)
   default     = []
 }
+
+variable "vpc_uuid" {
+  description = "The ID of the VPC where the load balancer will be located."
+  type        = string
+  default     = ""
+}

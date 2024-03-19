@@ -8,5 +8,6 @@ resource "digitalocean_droplet" "main" {
   backups    = var.backups
   monitoring = var.monitoring
   ssh_keys   = var.ssh_keys
+  vpc_uuid   = var.vpc_uuid
 }
 # backups, monitoring, ssh_keys
