@@ -79,7 +79,6 @@ No modules.
 | <a name="output_name"></a> [name](#output\_name) | The name of the Droplet. |
 | <a name="output_region"></a> [region](#output\_region) | The region of the Droplet. |
 | <a name="output_status"></a> [status](#output\_status) | The status of the Droplet. |
-| <a name="output_volume_id"></a> [volume\_id](#output\_volume\_id) | The unique identifier for the volume. |
 <!-- END_TF_DOCS -->
 
 ## Examples of usage

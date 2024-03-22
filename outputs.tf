@@ -33,8 +33,3 @@ output "status" {
   description = "The status of the Droplet."
   value       = digitalocean_droplet.main.status
 }
-
-output "volume_id" {
-  description = "The unique identifier for the volume."
-  value       = digitalocean_volume.main[0]
-}
