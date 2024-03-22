@@ -56,6 +56,6 @@ variable "vpc_uuid" {
 
 variable "volumes" {
   description = "Volume for for_each"
-  type        = list(string)
+  type        = set(string)
   default     = []
 }
