@@ -63,11 +63,9 @@ No modules.
 | <a name="input_region"></a> [region](#input\_region) | The region where the Droplet will be created. | `string` | n/a | yes |
 | <a name="input_size"></a> [size](#input\_size) | The unique slug that indentifies the type of Droplet. | `string` | n/a | yes |
 | <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | A list of the tags to be applied to this Droplet. | `list(string)` | `[]` | no |
-| <a name="input_storage_attach"></a> [storage\_attach](#input\_storage\_attach) | The ID of the VPC where the load balancer will be located. | `bool` | `false` | no |
-| <a name="input_storage_name"></a> [storage\_name](#input\_storage\_name) | A name for the block storage volume. Must be lowercase and be composed only of numbers, letters up to a limit of 64 characters. The name must begin with a letter. | `string` | `""` | no |
-| <a name="input_storage_size"></a> [storage\_size](#input\_storage\_size) | The size of the block storage volume in GiB. If updated, can only be expanded. | `number` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A list of the tags to be applied to this Droplet. | `list(string)` | `[]` | no |
 | <a name="input_user_data"></a> [user\_data](#input\_user\_data) | A string of the desired User Data for the Droplet. | `string` | `null` | no |
+| <a name="input_volumes"></a> [volumes](#input\_volumes) | Volume for for\_each | `list(string)` | `[]` | no |
 | <a name="input_vpc_uuid"></a> [vpc\_uuid](#input\_vpc\_uuid) | The ID of the VPC where the load balancer will be located. | `string` | `""` | no |
 
 ## Outputs

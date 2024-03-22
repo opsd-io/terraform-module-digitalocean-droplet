@@ -12,16 +12,16 @@ resource "digitalocean_droplet" "main" {
 }
 
 resource "digitalocean_volume" "main" {
-  count = var.storage_size > 0 ? 1 : 0
+  for_each = var.volumes
 
   region = var.region
-  name   = var.storage_name
-  size   = var.storage_size
+  name   = each.key
+  size   = each.value
+
 }
 
 resource "digitalocean_volume_attachment" "main" {
-  count = var.storage_size > 0 && var.storage_attach == true ? 1 : 0
-
+  for_each   = digitalocean_volume.main
   droplet_id = digitalocean_droplet.main.id
-  volume_id  = digitalocean_volume.main[count.index]
+  volume_id  = each.value.id
 }
