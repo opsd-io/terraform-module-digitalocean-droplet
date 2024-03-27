@@ -51,7 +51,7 @@ variable "ssh_keys" {
 variable "vpc_uuid" {
   description = "The ID of the VPC where the load balancer will be located."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "volumes" {
