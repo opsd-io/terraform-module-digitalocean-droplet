@@ -55,7 +55,7 @@ variable "vpc_uuid" {
 }
 
 variable "volumes" {
-  description = "Volume for for_each"
-  type        = set(string)
-  default     = []
+  description = "Volume name and size for for_each, each.key is used as name, each.value is used as size"
+  type        = map(number)
+  default     = {}
 }

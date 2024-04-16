@@ -1,3 +1,14 @@
+terraform {
+  required_version = ">= 1.5.7"
+
+  required_providers {
+    digitalocean = {
+      source  = "digitalocean/digitalocean"
+      version = ">= 2.34.1"
+    }
+  }
+}
+
 resource "digitalocean_droplet" "main" {
   image      = var.image
   name       = var.name
@@ -21,7 +32,8 @@ resource "digitalocean_volume" "main" {
 }
 
 resource "digitalocean_volume_attachment" "main" {
-  for_each   = digitalocean_volume.main
+  for_each = digitalocean_volume.main
+
   droplet_id = digitalocean_droplet.main.id
   volume_id  = each.value.id
 }

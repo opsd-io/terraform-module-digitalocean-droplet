@@ -1,30 +1,6 @@
-# Example title
 
-Brief description of an example.
+Example Droplet creation - basic.
 
-## Required tools
-
-### AZ CLI
-
-Before you start, you need to install Azure CLI according to the official [documentation](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli).
-
-Use the `az login` command to login to your Azure subscription.
-
-### asdf and direnv
-
-Additinaly `asdf` and `direnv` must be installed and configured according to their official documentation.
-
-- [asdf](https://asdf-vm.com/) -  manages multiple runtime versions;
-- [direnv](https://direnv.net/) - augments existing shells with a new feature that can load and unload environment variables.
-
-### Terraform
-
-The suggested Terraform version is defined in the [.tool-versions](.tool-versions) file.
-To install it, simply execute
-
-```bash
-asdf install terraform
-```
 
 ## Terraforming infrastructure
 

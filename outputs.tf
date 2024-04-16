@@ -1,4 +1,3 @@
-# The following attributes are exported:
 output "id" {
   description = "The ID of the droplet."
   value       = digitalocean_droplet.main.id

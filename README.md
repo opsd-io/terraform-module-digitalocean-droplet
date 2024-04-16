@@ -65,7 +65,7 @@ No modules.
 | <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | A list of the tags to be applied to this Droplet. | `list(string)` | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A list of the tags to be applied to this Droplet. | `list(string)` | `[]` | no |
 | <a name="input_user_data"></a> [user\_data](#input\_user\_data) | A string of the desired User Data for the Droplet. | `string` | `null` | no |
-| <a name="input_volumes"></a> [volumes](#input\_volumes) | Volume for for\_each | `set(string)` | `[]` | no |
+| <a name="input_volumes"></a> [volumes](#input\_volumes) | Volume name and size for for\_each, each.key is used as name, each.value is used as size | `map(number)` | `{}` | no |
 | <a name="input_vpc_uuid"></a> [vpc\_uuid](#input\_vpc\_uuid) | The ID of the VPC where the load balancer will be located. | `string` | `null` | no |
 
 ## Outputs
