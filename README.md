@@ -31,11 +31,14 @@ module "module_name" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
+| <a name="requirement_digitalocean"></a> [digitalocean](#requirement\_digitalocean) | >= 2.34.1 |
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | >= 2.34.1 |
 
 ## Modules
 
@@ -43,15 +46,39 @@ No modules.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [digitalocean_droplet.main](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/droplet) | resource |
+| [digitalocean_volume.main](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) | resource |
+| [digitalocean_volume_attachment.main](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume_attachment) | resource |
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_backups"></a> [backups](#input\_backups) | A list of the tags to be applied to this Droplet. | `bool` | `false` | no |
+| <a name="input_image"></a> [image](#input\_image) | The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. | `string` | n/a | yes |
+| <a name="input_monitoring"></a> [monitoring](#input\_monitoring) | A list of the tags to be applied to this Droplet. | `bool` | `false` | no |
+| <a name="input_name"></a> [name](#input\_name) | The Droplet name. | `string` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | The region where the Droplet will be created. | `string` | n/a | yes |
+| <a name="input_size"></a> [size](#input\_size) | The unique slug that indentifies the type of Droplet. | `string` | n/a | yes |
+| <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | A list of the tags to be applied to this Droplet. | `list(string)` | `[]` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | A list of the tags to be applied to this Droplet. | `list(string)` | `[]` | no |
+| <a name="input_user_data"></a> [user\_data](#input\_user\_data) | A string of the desired User Data for the Droplet. | `string` | `null` | no |
+| <a name="input_volumes"></a> [volumes](#input\_volumes) | Volume name and size for for\_each, each.key is used as name, each.value is used as size | `map(number)` | `{}` | no |
+| <a name="input_vpc_uuid"></a> [vpc\_uuid](#input\_vpc\_uuid) | The ID of the VPC where the load balancer will be located. | `string` | `null` | no |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_arn"></a> [arn](#output\_arn) | The URN of the droplet. |
+| <a name="output_id"></a> [id](#output\_id) | The ID of the droplet. |
+| <a name="output_image"></a> [image](#output\_image) | The image of the Droplet. |
+| <a name="output_ipv4_address"></a> [ipv4\_address](#output\_ipv4\_address) | The IPv4 address. |
+| <a name="output_name"></a> [name](#output\_name) | The name of the Droplet. |
+| <a name="output_region"></a> [region](#output\_region) | The region of the Droplet. |
+| <a name="output_status"></a> [status](#output\_status) | The status of the Droplet. |
 <!-- END_TF_DOCS -->
 
 ## Examples of usage
