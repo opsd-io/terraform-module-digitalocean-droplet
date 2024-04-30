@@ -18,11 +18,11 @@ variable "size" {
   type        = string
 }
 
-variable "user_data" {
-  description = "A string of the desired User Data for the Droplet."
-  type        = string
-  default     = null
-}
+# variable "user_data" {
+#   description = "A string of the desired User Data for the Droplet."
+#   type        = string
+#   default     = null
+# }
 
 variable "tags" {
   description = "A list of the tags to be applied to this Droplet."

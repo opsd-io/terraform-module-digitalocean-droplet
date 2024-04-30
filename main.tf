@@ -6,6 +6,10 @@ terraform {
       source  = "digitalocean/digitalocean"
       version = ">= 2.34.1"
     }
+    cloudinit = {
+      source  = "hashicorp/cloudinit"
+      version = "2.3.4"
+    }
   }
 }
 
@@ -14,12 +18,16 @@ resource "digitalocean_droplet" "main" {
   name       = var.name
   region     = var.region
   size       = var.size
-  user_data  = var.user_data
+  user_data  = data.cloudinit_config.nodeexporter.rendered
   tags       = var.tags
   backups    = var.backups
   monitoring = var.monitoring
   ssh_keys   = var.ssh_keys
   vpc_uuid   = var.vpc_uuid
+
+  lifecycle {
+    ignore_changes = [user_data]
+  }
 }
 
 resource "digitalocean_volume" "main" {
@@ -36,4 +44,43 @@ resource "digitalocean_volume_attachment" "main" {
 
   droplet_id = digitalocean_droplet.main.id
   volume_id  = each.value.id
+}
+
+# data "cloudinit_config" "nodeexporter" {
+#   part {
+#     content_type = "text/x-shellscript"
+#     content      = file("${path.root}/nodeexporter.sh")
+#   }
+
+#   part {
+#     content_type = "text/cloud-config"
+#     content = yamlencode({
+#       write_files = [
+#         {
+#           encoding    = "b64"
+#           content     = filebase64("${path.root}/nodeexporter.txt")
+#           path        = "/etc/systemd/system/node_exporter.service"
+#           owner       = "node_exporter:node_exporter"
+#           permissions = "0755"
+#         },
+#       ]
+#     })
+#   }
+
+#   part {
+#     content_type = "text/x-shellscript"
+#     content      = file("${path.root}/nodeexporter_start.sh")
+#   }
+# }
+
+data "cloudinit_config" "nodeexporter" {
+  gzip          = false
+  base64_encode = false
+
+  # Node
+  part {
+    filename     = "nodeexporter.sh"
+    content_type = "text/x-shellscript"
+    content      = file("${path.root}/nodeexporter.sh")
+  }
 }
