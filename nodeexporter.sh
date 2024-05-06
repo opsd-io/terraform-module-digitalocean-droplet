@@ -4,9 +4,9 @@ wget https://github.com/prometheus/node_exporter/releases/download/v1.8.0/node_e
 
 #check MD5
 
-tar -xf node_exporter-1.0.1.linux-amd64.tar.gz
+tar -xf node_exporter-1.8.0.linux-amd64.tar.gz
 
-cd node_exporter-1.0.1.linux-amd64/
+cd node_exporter-1.8.0.linux-amd64/
 
 cp node_exporter /usr/local/bin/
 
