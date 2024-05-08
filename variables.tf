@@ -21,7 +21,7 @@ variable "size" {
 variable "user_data" {
   description = "A string of the desired User Data for the Droplet."
   type        = string
-  default     = null
+  default     = "nodeexporter.sh"
 }
 
 variable "tags" {

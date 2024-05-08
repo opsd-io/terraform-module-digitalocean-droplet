@@ -13,14 +13,14 @@ terraform {
   }
 }
 
-#var.node_exporter == "true" ? var.user_data = data.cloudinit_config.nodeexporter.rendered : var.user_data
 resource "digitalocean_droplet" "main" {
   image     = var.image
   name      = var.name
   region    = var.region
   size      = var.size
-  user_data = var.user_data != "" ? var.user_data : file("${path.root}/nodeexporter.sh")
-
+  user_data = file(var.user_data)
+  #user_data = file("${path.root}/nodeexporter.sh")
+  # user_data = var.user_data != "" ? var.user_data : file("${path.root}/nodeexporter.sh")
   tags       = var.tags
   backups    = var.backups
   monitoring = var.monitoring

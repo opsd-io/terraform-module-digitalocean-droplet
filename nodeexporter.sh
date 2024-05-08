@@ -12,7 +12,25 @@ cp node_exporter /usr/local/bin/
 
 useradd -r node_exporter
 
-nano /etc/systemd/system/node_exporter.service
+touch /etc/systemd/system/node_exporter.service
+
+FILE="/etc/systemd/system/node_exporter.service"
+  cat <<EOM | sudo tee $FILE
+[[Unit]
+Description=Node Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=node_exporter
+Group=node_exporter
+Type=simple
+ExecStart=/usr/local/bin/node_exporter
+
+[Install]
+WantedBy=multi-user.target
+
+EOM
 
 systemctl daemon-reload
 
