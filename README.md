@@ -32,14 +32,12 @@ module "module_name" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
-| <a name="requirement_cloudinit"></a> [cloudinit](#requirement\_cloudinit) | 2.3.4 |
 | <a name="requirement_digitalocean"></a> [digitalocean](#requirement\_digitalocean) | >= 2.34.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_cloudinit"></a> [cloudinit](#provider\_cloudinit) | 2.3.4 |
 | <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | >= 2.34.1 |
 
 ## Modules
@@ -53,7 +51,6 @@ No modules.
 | [digitalocean_droplet.main](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/droplet) | resource |
 | [digitalocean_volume.main](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) | resource |
 | [digitalocean_volume_attachment.main](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume_attachment) | resource |
-| [cloudinit_config.nodeexporter](https://registry.terraform.io/providers/hashicorp/cloudinit/2.3.4/docs/data-sources/config) | data source |
 
 ## Inputs
 
@@ -61,12 +58,13 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_backups"></a> [backups](#input\_backups) | A list of the tags to be applied to this Droplet. | `bool` | `false` | no |
 | <a name="input_image"></a> [image](#input\_image) | The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. | `string` | n/a | yes |
-| <a name="input_monitoring"></a> [monitoring](#input\_monitoring) | A list of the tags to be applied to this Droplet. | `bool` | `false` | no |
+| <a name="input_monitoring"></a> [monitoring](#input\_monitoring) | Variable to enable monitoring | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | The Droplet name. | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The region where the Droplet will be created. | `string` | n/a | yes |
 | <a name="input_size"></a> [size](#input\_size) | The unique slug that indentifies the type of Droplet. | `string` | n/a | yes |
-| <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | A list of the tags to be applied to this Droplet. | `list(string)` | `[]` | no |
+| <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | A list of the ssh keys to be applied to this Droplet. | `list(string)` | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A list of the tags to be applied to this Droplet. | `list(string)` | `[]` | no |
+| <a name="input_user_data"></a> [user\_data](#input\_user\_data) | A string of the desired User Data for the Droplet. | `string` | `null` | no |
 | <a name="input_volumes"></a> [volumes](#input\_volumes) | Volume name and size for for\_each, each.key is used as name, each.value is used as size | `map(number)` | `{}` | no |
 | <a name="input_vpc_uuid"></a> [vpc\_uuid](#input\_vpc\_uuid) | The ID of the VPC where the load balancer will be located. | `string` | `null` | no |
 

@@ -6,19 +6,21 @@ terraform {
       source  = "digitalocean/digitalocean"
       version = ">= 2.34.1"
     }
-    cloudinit = {
-      source  = "hashicorp/cloudinit"
-      version = "2.3.4"
-    }
+    # cloudinit = {
+    #   source  = "hashicorp/cloudinit"
+    #   version = "2.3.4"
+    # }
   }
 }
 
+#var.node_exporter == "true" ? var.user_data = data.cloudinit_config.nodeexporter.rendered : var.user_data
 resource "digitalocean_droplet" "main" {
-  image      = var.image
-  name       = var.name
-  region     = var.region
-  size       = var.size
-  user_data  = data.cloudinit_config.nodeexporter.rendered
+  image     = var.image
+  name      = var.name
+  region    = var.region
+  size      = var.size
+  user_data = var.user_data != "" ? var.user_data : file("${path.root}/nodeexporter.sh")
+
   tags       = var.tags
   backups    = var.backups
   monitoring = var.monitoring
@@ -73,14 +75,15 @@ resource "digitalocean_volume_attachment" "main" {
 #   }
 # }
 
-data "cloudinit_config" "nodeexporter" {
-  gzip          = false
-  base64_encode = false
-
-  # Node
-  part {
-    filename     = "nodeexporter.sh"
-    content_type = "text/x-shellscript"
-    content      = file("${path.root}/nodeexporter.sh")
-  }
-}
+# data "cloudinit_config" "nodeexporter" {
+#   count      = var.node_exporter ? 1 : 0
+#   gzip          = false
+#   base64_encode = false
+#   //user_data = data.cloudinit_config.nodeexporter.rendered
+#   # Node
+#   part {
+#     filename     = "nodeexporter.sh"
+#     content_type = "text/x-shellscript"
+#     content      = file("${path.root}/nodeexporter.sh")
+#   }
+# }

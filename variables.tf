@@ -18,11 +18,11 @@ variable "size" {
   type        = string
 }
 
-# variable "user_data" {
-#   description = "A string of the desired User Data for the Droplet."
-#   type        = string
-#   default     = null
-# }
+variable "user_data" {
+  description = "A string of the desired User Data for the Droplet."
+  type        = string
+  default     = null
+}
 
 variable "tags" {
   description = "A list of the tags to be applied to this Droplet."
@@ -37,13 +37,13 @@ variable "backups" {
 }
 
 variable "monitoring" {
-  description = "A list of the tags to be applied to this Droplet."
+  description = "Variable to enable monitoring"
   type        = bool
   default     = false
 }
 
 variable "ssh_keys" {
-  description = "A list of the tags to be applied to this Droplet."
+  description = "A list of the ssh keys to be applied to this Droplet."
   type        = list(string)
   default     = []
 }
@@ -59,3 +59,9 @@ variable "volumes" {
   type        = map(number)
   default     = {}
 }
+
+# variable "node_exporter" {
+#   description = "Variable for enabling node exporter installation"
+#   type        = bool
+#   default     = false
+# }
