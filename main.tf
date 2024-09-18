@@ -45,7 +45,7 @@ resource "digitalocean_firewall" "main" {
   droplet_ids = [digitalocean_droplet.main.id]
 
   dynamic "inbound_rule" {
-    for_each = var.inbound_rule
+    for_each = var.firewall_inbound_rule
     content {
       protocol                  = inbound_rule.value.protocol
       port_range                = inbound_rule.value.port_range
@@ -57,7 +57,7 @@ resource "digitalocean_firewall" "main" {
     }
   }
   dynamic "outbound_rule" {
-    for_each = var.outbound_rule
+    for_each = var.firewall_outbound_rule
     content {
       protocol                       = outbound_rule.value.protocol
       port_range                     = outbound_rule.value.port_range
