@@ -66,7 +66,7 @@ variable "firewall_enable" {
   default     = false
 }
 
-variable "inbound_rule" {
+variable "firewall_inbound_rule" {
   description = "List of objects that represent the configuration of each inbound rule."
   type = list(object({
     protocol           = string
@@ -95,7 +95,7 @@ variable "inbound_rule" {
   ]
 }
 
-variable "outbound_rule" {
+variable "firewall_outbound_rule" {
   description = "List of objects that represent the configuration of each outbound rule."
   type = list(object({
     protocol              = string

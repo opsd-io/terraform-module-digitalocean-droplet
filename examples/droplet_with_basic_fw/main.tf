@@ -8,7 +8,7 @@ module "digitalocean_droplet" {
   region          = "nyc1"
   size            = "s-1vcpu-1gb"
   firewall_enable = true
-  inbound_rule = [
+  firewall_inbound_rule = [
     {
       protocol   = "tcp"
       port_range = "22"
@@ -29,5 +29,5 @@ module "digitalocean_droplet" {
       tags       = ["postgresql"]
     }
   ]
-  # leaving outbound_rule variable undefined you will allow for any TCP and UDP traffic.
+  # leaving firewall_outbound_rule variable undefined you will allow for any TCP and UDP traffic.
 }
