@@ -10,21 +10,22 @@ Meet **OPSd**. The unique and effortless way of managing cloud infrastructure.
 
 ## Introduction
 
-What does the module provide?
+DigitalOcean virtual machine (droplet) module
 
 ## Usage
 
 ```hcl
-module "module_name" {
-  source  = "github.com/opsd-io/module_name?ref=v0.0.1"
-
-  # Variables
-  variable_1 = "foo"
-  variable_2 = "bar"
+module "digitalocean_droplet" {
+  source = "github.com/opsd-io/terraform-module-digitalocean-droplet?ref=v1.0.0"
+  image           = "ubuntu-20-04-x64"
+  name            = "web-1"
+  region          = "nyc1"
+  size            = "s-1vcpu-1gb"
+  firewall_enable = false
 }
 ```
 
-**IMPORTANT**: Make sure not to pin to master because there may be breaking changes between releases.
+**IMPORTANT**: Make sure not to pin to main branch because there may be breaking changes between releases.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
