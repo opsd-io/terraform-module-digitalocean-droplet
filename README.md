@@ -10,35 +10,36 @@ Meet **OPSd**. The unique and effortless way of managing cloud infrastructure.
 
 ## Introduction
 
-What does the module provide?
+DigitalOcean virtual machine (droplet) module
 
 ## Usage
 
 ```hcl
-module "module_name" {
-  source  = "github.com/opsd-io/module_name?ref=v0.0.1"
-
-  # Variables
-  variable_1 = "foo"
-  variable_2 = "bar"
+module "digitalocean_droplet" {
+  source = "github.com/opsd-io/terraform-module-digitalocean-droplet?ref=v1.0.0"
+  image           = "ubuntu-20-04-x64"
+  name            = "web-1"
+  region          = "nyc1"
+  size            = "s-1vcpu-1gb"
+  firewall_enable = false
 }
 ```
 
-**IMPORTANT**: Make sure not to pin to master because there may be breaking changes between releases.
+**IMPORTANT**: Make sure not to pin to main branch because there may be breaking changes between releases.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
-| <a name="requirement_digitalocean"></a> [digitalocean](#requirement\_digitalocean) | >= 2.34.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.5 |
+| <a name="requirement_digitalocean"></a> [digitalocean](#requirement\_digitalocean) | >= 2.41.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | >= 2.34.1 |
+| <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | >= 2.41.0 |
 
 ## Modules
 
@@ -49,6 +50,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [digitalocean_droplet.main](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/droplet) | resource |
+| [digitalocean_firewall.main](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/firewall) | resource |
 | [digitalocean_volume.main](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) | resource |
 | [digitalocean_volume_attachment.main](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume_attachment) | resource |
 
@@ -57,9 +59,12 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_backups"></a> [backups](#input\_backups) | A list of the tags to be applied to this Droplet. | `bool` | `false` | no |
+| <a name="input_firewall_enable"></a> [firewall\_enable](#input\_firewall\_enable) | Flag to control the droplet firewall creation. | `bool` | `false` | no |
 | <a name="input_image"></a> [image](#input\_image) | The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. | `string` | n/a | yes |
+| <a name="input_inbound_rule"></a> [inbound\_rule](#input\_inbound\_rule) | List of objects that represent the configuration of each inbound rule. | <pre>list(object({<br>    protocol           = string<br>    port_range         = string<br>    source_addresses   = optional(list(string))<br>    droplet_ids        = optional(list(string))<br>    load_balancer_uids = optional(list(string))<br>    kubernetes_ids     = optional(list(string))<br>    tags               = optional(list(string))<br>  }))</pre> | <pre>[<br>  {<br>    "port_range": "1-65535",<br>    "protocol": "tcp",<br>    "source_addresses": [<br>      "0.0.0.0/0",<br>      "::/0"<br>    ]<br>  },<br>  {<br>    "port_range": "1-65535",<br>    "protocol": "udp",<br>    "source_addresses": [<br>      "0.0.0.0/0",<br>      "::/0"<br>    ]<br>  }<br>]</pre> | no |
 | <a name="input_monitoring"></a> [monitoring](#input\_monitoring) | A list of the tags to be applied to this Droplet. | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | The Droplet name. | `string` | n/a | yes |
+| <a name="input_outbound_rule"></a> [outbound\_rule](#input\_outbound\_rule) | List of objects that represent the configuration of each outbound rule. | <pre>list(object({<br>    protocol              = string<br>    port_range            = string<br>    destination_addresses = optional(list(string))<br>    droplet_ids           = optional(list(string))<br>    load_balancer_uids    = optional(list(string))<br>    kubernetes_ids        = optional(list(string))<br>    tags                  = optional(list(string))<br>  }))</pre> | <pre>[<br>  {<br>    "destination_addresses": [<br>      "0.0.0.0/0",<br>      "::/0"<br>    ],<br>    "port_range": "1-65535",<br>    "protocol": "tcp"<br>  },<br>  {<br>    "destination_addresses": [<br>      "0.0.0.0/0",<br>      "::/0"<br>    ],<br>    "port_range": "1-65535",<br>    "protocol": "udp"<br>  }<br>]</pre> | no |
 | <a name="input_region"></a> [region](#input\_region) | The region where the Droplet will be created. | `string` | n/a | yes |
 | <a name="input_size"></a> [size](#input\_size) | The unique slug that indentifies the type of Droplet. | `string` | n/a | yes |
 | <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | A list of the tags to be applied to this Droplet. | `list(string)` | `[]` | no |

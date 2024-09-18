@@ -59,3 +59,67 @@ variable "volumes" {
   type        = map(number)
   default     = {}
 }
+
+variable "firewall_enable" {
+  description = "Flag to control the droplet firewall creation."
+  type        = bool
+  default     = false
+}
+
+variable "inbound_rule" {
+  description = "List of objects that represent the configuration of each inbound rule."
+  type = list(object({
+    protocol           = string
+    port_range         = string
+    source_addresses   = optional(list(string))
+    droplet_ids        = optional(list(string))
+    load_balancer_uids = optional(list(string))
+    kubernetes_ids     = optional(list(string))
+    tags               = optional(list(string))
+  }))
+  default = [
+    {
+      protocol   = "tcp"
+      port_range = "1-65535"
+      source_addresses = [
+        "0.0.0.0/0",
+      "::/0"]
+    },
+    {
+      protocol   = "udp"
+      port_range = "1-65535"
+      source_addresses = [
+        "0.0.0.0/0",
+      "::/0"]
+    }
+  ]
+}
+
+variable "outbound_rule" {
+  description = "List of objects that represent the configuration of each outbound rule."
+  type = list(object({
+    protocol              = string
+    port_range            = string
+    destination_addresses = optional(list(string))
+    droplet_ids           = optional(list(string))
+    load_balancer_uids    = optional(list(string))
+    kubernetes_ids        = optional(list(string))
+    tags                  = optional(list(string))
+  }))
+  default = [
+    {
+      protocol   = "tcp"
+      port_range = "1-65535"
+      destination_addresses = [
+        "0.0.0.0/0",
+      "::/0"]
+    },
+    {
+      protocol   = "udp"
+      port_range = "1-65535"
+      destination_addresses = [
+        "0.0.0.0/0",
+      "::/0"]
+    }
+  ]
+}
