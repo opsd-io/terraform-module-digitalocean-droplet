@@ -40,7 +40,7 @@ resource "digitalocean_volume_attachment" "main" {
 
 resource "digitalocean_firewall" "main" {
   count = var.firewall_enable ? 1 : 0
-  name  = "only-22-80-and-443"
+  name  = "${digitalocean_droplet.main.name}-fw"
 
   droplet_ids = [digitalocean_droplet.main.id]
 
